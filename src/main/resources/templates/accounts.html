@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Accounts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<table>
+	<thead>
+	<tr>
+		<th th:text="#{account}"/>
+		<th th:text="#{account.iban}"/>
+		<th th:text="#{account.bank.name}"/>
+		<th th:text="#{account.bic}"/>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="acc : ${accounts}">
+		<td th:text="${acc.account}"/>
+		<td th:text="${acc.bankAccountNumber}"/>
+		<td th:text="${acc.bankName}"/>
+		<td th:text="${acc.bankIdCode}"/>
+	</tr>
+	</tbody>
+</table>
+</body>
+</html>
