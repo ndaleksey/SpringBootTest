@@ -1,0 +1,101 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Users</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+		  integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+			integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+			crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Имя</th>
+				<th>Страна</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="u : ${users}">
+				<td th:text="${u.name}"/>
+				<td th:text="${u.country}"/>
+				<td>
+					<a id="accountsShowRef" class="btn btn-primary"
+					   th:href="@{/users/{id}/accounts(id=${u.id})}">Аккаунты</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<form th:action="@{/users/find}" th:object="${user}" method="post">
+			<div class="form-group">
+				<label for="name">Имя:</label>
+				<input id="name" class="form-control" th:value="${user.name}" name="name" type="text" placeholder="Имя">
+			</div>
+			<button class="btn btn-primary" type="submit">Найти</button>
+		</form>
+	</div>
+</div>
+
+<div class="modal fade" id="accountsDialog" tabindex="-1" role="dialog"
+	 aria-labelledby="deleteClientModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="deleteClientModalLabel">Аккаунты</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<table class="table">
+					<thead>
+					<tr>
+						<th></th>
+						<th th:text="#{account}"/>
+						<th th:text="#{account.iban}"/>
+						<th th:text="#{account.bank.name}"/>
+						<th th:text="#{account.bic}"/>
+					</tr>
+					</thead>
+					<tbody>
+					<tr th:each="acc : ${accounts}">
+						<td>
+							<input th:id="'account_' + ${acc.id}" th:checked="${acc.checked}" type="checkbox">
+						</td>
+						<td th:text="${acc.account}"/>
+						<td th:text="${acc.bankAccountNumber}"/>
+						<td th:text="${acc.bankName}"/>
+						<td th:text="${acc.bankIdCode}"/>
+					</tr>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<a id="deleteRef" href="" class="btn btn-danger">Удалить</a>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="../static/js/users.js" th:src="@{/js/users.js}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+</body>
+</html>

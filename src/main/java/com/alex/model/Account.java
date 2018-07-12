@@ -23,6 +23,8 @@ public class Account {
 	 */
 	private String bankIdCode;
 
+	private boolean isChecked;
+
 	@ManyToOne
 	private User user;
 
@@ -83,5 +85,13 @@ public class Account {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean checked) {
+		isChecked = checked;
 	}
 }

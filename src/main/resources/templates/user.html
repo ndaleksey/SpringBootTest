@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Accounts</title>
+	<title>User</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -11,32 +10,19 @@
 			crossorigin="anonymous"></script>
 </head>
 <body>
-
 <div class="container">
 	<div class="row">
-		<table class="table">
-			<thead>
-			<tr>
-				<th th:text="#{account}"/>
-				<th th:text="#{account.iban}"/>
-				<th th:text="#{account.bank.name}"/>
-				<th th:text="#{account.bic}"/>
-			</tr>
-			</thead>
-			<tbody>
-			<tr th:each="acc : ${accounts}">
-				<td th:text="${acc.account}"/>
-				<td th:text="${acc.bankAccountNumber}"/>
-				<td th:text="${acc.bankName}"/>
-				<td th:text="${acc.bankIdCode}"/>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="row">
-		<div class="form-group">
-			<label>			</label>
-		</div>
+		<form>
+			<div class="form-group">
+				<label for="name">Имя:</label>
+				<input id="name" class="form-control" th:field="${user.name}" type="text">
+			</div>
+			<div class="form-group">
+				<label for="country">Страна:</label>
+				<input id="country" class="form-control" th:field="${user.country}" type="text">
+			</div>
+			<a class="btn btn-primary" th:href="@{/users}">Назад</a>
+		</form>
 	</div>
 </div>
 </body>
