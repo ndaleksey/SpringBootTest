@@ -44,12 +44,30 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+		<!-- PostgreSQL connection -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
 		<!-- JUnit 5 -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 		</dependency>
 
+		<!-- JSON -->
+		<!--<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>LATEST</version>
+		</dependency>-->
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>LATEST</version>
+		</dependency>
 	</dependencies>
 
 	<properties>

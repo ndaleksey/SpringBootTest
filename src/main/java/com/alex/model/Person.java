@@ -1,29 +1,33 @@
 package com.alex.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Shishkov A.V. on 05.07.18.
  */
 @Entity
-public class User {
+public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String name;
 
-	private String country;
+	@ManyToOne
+	private Country country;
 
-	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "user", fetch = FetchType.EAGER)
-	private Set<Account> accounts = new HashSet<>();
+	private int age;
 
-	public User() {
+	@Enumerated
+	private Gender gender;
+
+	/*@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "person", fetch = FetchType.EAGER)
+	private Set<Account> accounts = new HashSet<>();*/
+
+	public Person() {
 	}
 
-	public User(String name, String country) {
+	public Person(String name, Country country) {
 		this.name = name;
 		this.country = country;
 	}
@@ -44,19 +48,19 @@ public class User {
 		this.name = name;
 	}
 
-	public String getCountry() {
+	public Country getCountry() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(Country country) {
 		this.country = country;
 	}
 
-	public Set<Account> getAccounts() {
+	/*public Set<Account> getAccounts() {
 		return accounts;
 	}
 
 	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
-	}
+	}*/
 }

@@ -15,13 +15,13 @@
 		<form>
 			<div class="form-group">
 				<label for="name">Имя:</label>
-				<input id="name" class="form-control" th:field="${user.name}" type="text">
+				<input id="name" class="form-control" th:field="${person.name}" type="text">
 			</div>
 			<div class="form-group">
 				<label for="country">Страна:</label>
-				<input id="country" class="form-control" th:field="${user.country}" type="text">
+				<input id="country" class="form-control" th:field="${person.country}" type="text">
 			</div>
-			<a class="btn btn-primary" th:href="@{/users}">Назад</a>
+			<a class="btn btn-primary" th:href="@{/people}">Назад</a>
 		</form>
 	</div>
 </div>

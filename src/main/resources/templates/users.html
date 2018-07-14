@@ -27,22 +27,22 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr th:each="u : ${users}">
+			<tr th:each="u : ${people}">
 				<td th:text="${u.name}"/>
 				<td th:text="${u.country}"/>
 				<td>
 					<a id="accountsShowRef" class="btn btn-primary"
-					   th:href="@{/users/{id}/accounts(id=${u.id})}">Аккаунты</a>
+					   th:href="@{/people/{id}/accounts(id=${u.id})}">Аккаунты</a>
 				</td>
 			</tr>
 			</tbody>
 		</table>
 	</div>
 	<div class="row">
-		<form th:action="@{/users/find}" th:object="${user}" method="post">
+		<form th:action="@{/people/find}" th:object="${person}" method="post">
 			<div class="form-group">
 				<label for="name">Имя:</label>
-				<input id="name" class="form-control" th:value="${user.name}" name="name" type="text" placeholder="Имя">
+				<input id="name" class="form-control" th:value="${person.name}" name="name" type="text" placeholder="Имя">
 			</div>
 			<button class="btn btn-primary" type="submit">Найти</button>
 		</form>
@@ -92,7 +92,7 @@
 </div>
 
 
-<script src="../static/js/users.js" th:src="@{/js/users.js}"></script>
+<script src="../static/js/people.js" th:src="@{/js/people.js}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
