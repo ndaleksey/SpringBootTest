@@ -2,6 +2,7 @@ package com.alex.service;
 
 import com.alex.model.Person;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ public interface PersonService {
 	Person findById(Long id);
 
 	Person save(Person person);
+
+	void saveAll(Collection<Person> persons);
 
 	void delete(Long id);
 }

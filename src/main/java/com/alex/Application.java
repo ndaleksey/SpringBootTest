@@ -15,6 +15,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.Arrays;
+
 @ComponentScan("com.alex")
 @SpringBootApplication
 public class Application implements ApplicationRunner {
@@ -31,19 +33,17 @@ public class Application implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		Country russia = countryService.save(new Country("Russia", "RU"));
-		Country usa = countryService.save(new Country("USA", "US"));
-		Country england = countryService.save(new Country("England", "En"));
-		Country ukraine = countryService.save(new Country("Ukraine", "ua"));
+	public void run(ApplicationArguments args) {
+		Country russia = countryService.findByCode("ru");
+		Country usa = countryService.findByCode("us");
+		Country uk = countryService.findByCode("uk");
+		Country ukraine = countryService.findByCode("ua");
 
 		Person alex = new Person("Alex", russia);
 		Person nick = new Person("Nick", usa);
-		Person ashley = new Person("Ashley", england);
-		Person anna = new Person("Anna", russia);
+		Person ashley = new Person("Ashley", uk);
+		Person anna = new Person("Anna", ukraine);
 
-//		Account acc1 = new Account(alex, "Alex12", "1", "2", "3");
-		personService.save(alex);
-		personService.save(anna);
+		personService.saveAll(Arrays.asList(alex, nick, ashley, anna));
 	}
 }

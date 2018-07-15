@@ -6,6 +6,7 @@ import com.alex.service.PersonService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -37,6 +38,13 @@ public class DefaultPersonService implements PersonService {
 	@Override
 	public Person save(Person person) {
 		return repository.save(person);
+	}
+
+	@Override
+	public void saveAll(Collection<Person> persons) {
+		for (Person person : persons) {
+			repository.save(person);
+		}
 	}
 
 	@Override
